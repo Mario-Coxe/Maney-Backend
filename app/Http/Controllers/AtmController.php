@@ -97,7 +97,7 @@ class AtmController extends Controller
             $atm->distance = $this->haversineDistance($latitude, $longitude, $atm->longitude, $atm->latitude);
         }
 
-        $closestAtms = $atms->sortBy('distance')->take(6);
+        $closestAtms = $atms->sortBy('distance')->take(5);
 
         return response()->json($closestAtms);
     }

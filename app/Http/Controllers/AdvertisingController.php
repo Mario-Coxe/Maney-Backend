@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Storage;
-
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Advertising;
 use Illuminate\Http\Request;
 

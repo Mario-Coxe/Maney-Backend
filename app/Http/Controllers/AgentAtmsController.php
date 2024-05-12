@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AtmAgent;
 use App\Models\Atm;
 use Illuminate\Support\Facades\Hash;
-
+use App\Http\Controllers\Throwable;
 class AgentAtmsController extends Controller
 {
     public function register(Request $request)
