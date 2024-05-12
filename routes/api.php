@@ -9,34 +9,6 @@ use App\Http\Middleware\CheckDriverStatus;
 use App\Http\Controllers\AtmCategoryController;
 
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
-//User Web
-
-Route::prefix('v1/web/')->group(function () {
-
-    Route::post('login', [\App\Http\Controllers\UserController::class, 'login']);
-    Route::post('register', [\App\Http\Controllers\UserController::class, 'register']);
-    Route::get('me', [\App\Http\Controllers\AuthController::class, 'me'])->middleware('auth:sanctum');
-    Route::get('user/{user}/info', [\App\Http\Controllers\UserController::class, 'getUser'])->middleware('auth:sanctum');
-    Route::post('user/{user}/info', [\App\Http\Controllers\UserController::class, 'updateUserInfo'])->middleware('auth:sanctum');
-    Route::post('user/{user}/credentials', [\App\Http\Controllers\UserController::class, 'updateUserCredentials'])->middleware('auth:sanctum');
-    Route::put('user/updateUserInfo/{user}', [\App\Http\Controllers\UserController::class, 'updateUserInfo'])->middleware('auth:sanctum');
-    Route::delete('user/{user}/delete', [\App\Http\Controllers\UserController::class, 'deleteUser'])->middleware('auth:sanctum');
-    Route::get('user/all', [\App\Http\Controllers\UserController::class, 'getAll'])->middleware('auth:sanctum');
-});
-
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -55,6 +27,7 @@ Route::prefix('v1/')->group(function () {
     Route::post('agentLogin', [\App\Http\Controllers\atmSettingsController::class, 'login']);
     Route::post('agentRegister', [\App\Http\Controllers\atmSettingsController::class, 'register']);
     Route::post('agentAtm', [\App\Http\Controllers\AgentAtmsController::class, 'register']);
+    Route::get('closest', [AtmController::class, 'getClosestAtms']);
 
     //Carteira
     Route::get('/wallets/{id}', [\App\Http\Controllers\WalletController::class, 'show']);
@@ -63,9 +36,7 @@ Route::prefix('v1/')->group(function () {
     //Subscricao
     Route::apiResource('subscription_plans', SubscriptionPlanController::class);
 
-    //Admin
-    Route::get('/admin/users', [AdminController::class, 'index']);
-    Route::delete('/admin/users/{id}', [AdminController::class, 'destroy']);
+
 
     //Street
     Route::get('/street', [\App\Http\Controllers\streetController::class, 'getStreet']);
@@ -133,19 +104,6 @@ Route::get('/imagem/{nomeDaImagem}', function ($nomeDaImagem) {
     }
 });
 
-
-
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('v1/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
-});
-
-
-
-
-
-
-Route::middleware('auth:sanctum')->prefix('v1/')->group(function () {
-    Route::post('notifications/send', [\App\Http\Controllers\NotificationController::class, 'sendPushNotification']);
-    Route::post('message/send', [\App\Http\Controllers\NotificationController::class, 'sendMessage']);
-    Route::post('notifications/send', [\App\Http\Controllers\MyNotificacaoController::class, 'sendPushNotification']);
 });
