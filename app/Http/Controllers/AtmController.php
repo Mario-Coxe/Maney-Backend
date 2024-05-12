@@ -93,14 +93,38 @@ class AtmController extends Controller
             return response()->json(['error' => 'No active ATMs with cash available.'], 404);
         }
 
+        $closestAtms = [];
         foreach ($atms as $atm) {
-            $atm->distance = $this->haversineDistance($latitude, $longitude, $atm->longitude, $atm->latitude);
+            $closestAtms[] = [
+                'id' => $atm->id,
+                'name' => $atm->name,
+                'latitude' => $atm->latitude,
+                'longitude' => $atm->longitude,
+                'address' => $atm->address,
+                'has_cash' => $atm->has_cash,
+                'has_paper' => $atm->has_paper,
+                'id_street' => $atm->id_street,
+                'id_municipe' => $atm->id_municipe,
+                'updated_at' => $atm->updated_at,
+                'status' => $atm->status,
+                'created_at' => $atm->created_at,
+                'munipice' => $atm->munipice,
+                'distance' => number_format($this->haversineDistance($latitude, $longitude, $atm->longitude, $atm->latitude), 2),
+            ];
         }
 
-        $closestAtms = $atms->sortBy('distance')->take(5);
+        // Ordenar os ATMs pela menor distância
+        usort($closestAtms, function ($a, $b) {
+            return $a['distance'] <=> $b['distance'];
+        });
+
+        // Retornar apenas os 6 ATMs mais próximos
+        $closestAtms = array_slice($closestAtms, 0, 6);
 
         return response()->json($closestAtms);
     }
+
+
 
     private function haversineDistance($latitude1, $longitude1, $latitude2, $longitude2)
     {
