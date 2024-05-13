@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AtmAgent;
 use App\Models\Atm;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Throwable;
+
 class AgentAtmsController extends Controller
 {
     public function register(Request $request)
@@ -16,15 +16,12 @@ class AgentAtmsController extends Controller
             'atm_id' => 'required|string',
             'user_id' => 'required|string',
         ]);
-        try {
 
-            $atmAgent = $this->createAtmAgent($request->all());
-            $id = $request['atm_id'];
-            $this->updateStatus($id);
-            return $this->getResponse('Atm Atribuido com sucesso!', 201);
-        } catch (Throwable $th) {
-            return $this->getResponse('Erro ao Atribuir atm!', 401, $th->getMessage());
-        }
+
+        $atmAgent = $this->createAtmAgent($request->all());
+        $id = $request['atm_id'];
+        $this->updateStatus($id);
+        return $this->getResponse('Atm Atribuido com sucesso!', 201);
     }
     private function createAtmAgent($data)
     {
@@ -51,10 +48,13 @@ class AgentAtmsController extends Controller
     }
     public function getAtmById($user_id)
     {
-        $atm = AtmAgent::where('user_id', '=', $user_id)->get();
+        $atm = AtmAgent::where('user_id', '=', $user_id)
+            ->with('user')
+            ->with('atm')
+            ->get();
         return response()->json($atm);
     }
-    public function updateStatus($id, )
+    public function updateStatus($id,)
     {
         $atmUser = Atm::find($id);
         try {
@@ -66,6 +66,5 @@ class AgentAtmsController extends Controller
             //throw $th;
             return response()->json(["error" => $th]);
         }
-
     }
 }

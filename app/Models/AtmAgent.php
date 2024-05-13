@@ -19,8 +19,11 @@ class AtmAgent extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id'); // Assuming the foreign key is user_id
+        return $this->belongsTo(User::class, 'user_id');
     }
-  
 
+    public function atm()
+    {
+        return $this->belongsTo(Atm::class, 'atm_id');
+    }
 }

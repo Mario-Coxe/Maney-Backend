@@ -59,7 +59,7 @@ Route::prefix('v1/')->group(function () {
     Route::get('getHistoryByAgent/{agent_id}', [\App\Http\Controllers\HistorieController::class, 'getHistoryByAgent_id']);
     Route::get('user/getByNumber/{phone}', [\App\Http\Controllers\TypeOfUserController::class, 'getTYpeOfUser']);
     Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-    Route::post('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById']);
+    Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById']);
 
     //User
     Route::post('logout', [\App\Http\Controllers\atmSettingsController::class, 'logout']);
