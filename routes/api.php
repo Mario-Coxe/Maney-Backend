@@ -62,7 +62,7 @@ Route::prefix('v1/')->group(function () {
     Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById']);
 
     //User
-    Route::post('logout', [\App\Http\Controllers\atmSettingsController::class, 'logout']);
+   // Route::post('logout', [\App\Http\Controllers\atmSettingsController::class, 'logout']);
     Route::post('user/send-otp', [\App\Http\Controllers\OtpController::class, 'sendOtp']);
     Route::post('user/verify-otp', [\App\Http\Controllers\OtpController::class, 'verifyOtp']);
     Route::post('user/change_password', [\App\Http\Controllers\AuthController::class, 'change_password'])->middleware('auth:sanctum');

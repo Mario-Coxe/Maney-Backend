@@ -64,13 +64,12 @@ class AtmController extends Controller
     {
         $atmUser = Atm::find($id);
         try {
-            //code...
             $atmUser->has_cash = $has_cash;
             $atmUser->has_paper = $has_paper;
             $atmUser->updated_at = now();
             $atmUser->save();
+            return response()->json(["success" => "Status do ATM atualizado com sucesso", "data" => $atmUser]);
         } catch (\Throwable $th) {
-            //throw $th;
             return response()->json(["error" => $th]);
         }
     }

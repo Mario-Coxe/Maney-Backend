@@ -58,12 +58,9 @@ class AgentAtmsController extends Controller
     {
         $atmUser = Atm::find($id);
         try {
-            //code...
-
             $atmUser->status = 1;
             $atmUser->save();
         } catch (\Throwable $th) {
-            //throw $th;
             return response()->json(["error" => $th]);
         }
     }
