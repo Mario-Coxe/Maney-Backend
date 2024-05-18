@@ -28,6 +28,7 @@ Route::prefix('v1/')->group(function () {
     Route::post('agentRegister', [\App\Http\Controllers\atmSettingsController::class, 'register']);
     Route::post('agentAtm', [\App\Http\Controllers\AgentAtmsController::class, 'register']);
     Route::get('closest', [AtmController::class, 'getClosestAtms']);
+    Route::get('/atms/search/{search}',  [AtmController::class, 'search']);
 
     //Carteira
     Route::get('/wallets/{id}', [\App\Http\Controllers\WalletController::class, 'show']);
@@ -60,21 +61,6 @@ Route::prefix('v1/')->group(function () {
     Route::get('user/getByNumber/{phone}', [\App\Http\Controllers\TypeOfUserController::class, 'getTYpeOfUser']);
     Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
     Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById']);
-
-    //User
-   // Route::post('logout', [\App\Http\Controllers\atmSettingsController::class, 'logout']);
-    Route::post('user/send-otp', [\App\Http\Controllers\OtpController::class, 'sendOtp']);
-    Route::post('user/verify-otp', [\App\Http\Controllers\OtpController::class, 'verifyOtp']);
-    Route::post('user/change_password', [\App\Http\Controllers\AuthController::class, 'change_password'])->middleware('auth:sanctum');
-    Route::post('new-password/{telefone}', [\App\Http\Controllers\ClienteController::class, 'newPassword']);
-    Route::post('register', [\App\Http\Controllers\UserController::class, 'register']);
-    Route::get('me', [\App\Http\Controllers\AuthController::class, 'me'])->middleware('auth:sanctum');
-    Route::get('user/{user}/info', [\App\Http\Controllers\ClienteController::class, 'clienteByIdOrPhone'])->middleware('auth:sanctum');
-    Route::post('user/{user}/info', [\App\Http\Controllers\ClienteController::class, 'updateUserInfo'])->middleware('auth:sanctum');
-    Route::post('user/{user}/credentials', [\App\Http\Controllers\ClienteController::class, 'updateUserCredentials'])->middleware('auth:sanctum');
-    Route::put('user/updateUserInfo/{user}', [\App\Http\Controllers\ClienteController::class, 'updateUserInfo'])->middleware('auth:sanctum');
-    Route::delete('user/{user}/delete', [\App\Http\Controllers\ClienteController::class, 'deleteUser'])->middleware('auth:sanctum');
-    Route::get('user/all', [\App\Http\Controllers\ClienteController::class, 'getAll'])->middleware('auth:sanctum');
 
 
     // Facebook login

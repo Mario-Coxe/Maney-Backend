@@ -111,10 +111,6 @@ class AuthController extends Controller
         ]);
     }
 
-    public function typeOfUser(Resquest $request)
-    {
-        $userType = User::where('phone', '=', $request['phone']);
-    }
 
     public function me(Request $request)
     {

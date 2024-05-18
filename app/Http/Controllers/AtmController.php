@@ -142,4 +142,23 @@ class AtmController extends Controller
 
         return $distance;
     }
+
+
+    public function search($name = null)
+    {
+        $eventsQuery = Atm::where('status', 1);
+
+        if ($name !== null && trim($name) !== "") {
+            $eventsQuery->where('address', 'like', '%' . $name . '%');
+        }
+
+        $events = $eventsQuery->orderBy('updated_at', 'desc')
+            ->get();
+
+        if ($events->isEmpty() && $name !== null) {
+            return response()->json(['message' => 'Nenhum evento encontrado', 'events' => $events], 404);
+        }
+
+        return response()->json(['message' => 'Eventos encontrados', 'events' => $events], 200);
+    }
 }

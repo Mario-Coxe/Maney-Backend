@@ -26,43 +26,10 @@ class User extends Authenticatable
         'foto'
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
         'ativo' => 'boolean',
     ];
 
-    public function veiculos()
-    {
-        return $this->hasMany(Veiculo::class);
-    }
-
-    public function solicitacoes_motorista()
-    {
-        return $this->hasMany(SolicitacaoServico::class, 'motorista_id');
-    }
-
-    public function solicitacoes_cliente()
-    {
-        return $this->hasMany(SolicitacaoServico::class, 'cliente_id');
-    }
-
-    public function enderecoUser()
-    {
-        return $this->hasOne(EnderecoUser::class,'usuario_id');
-    }
-
-    public function isDriverActive()
-    {
-        return $this->tipo_usuario === 'motorista' && $this->ativo == true;
-    }
-
-    public function updateStatus()
-    {
-        // Your code here
-    }
 }

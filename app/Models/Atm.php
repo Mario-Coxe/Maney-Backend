@@ -17,6 +17,7 @@ class Atm extends Model
         'address',
         'has_cash',
         'has_paper',
+        'status'
     ];
 
 
