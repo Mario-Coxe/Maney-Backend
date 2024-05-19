@@ -28,7 +28,9 @@ Route::prefix('v1/')->group(function () {
     Route::post('agentRegister', [\App\Http\Controllers\atmSettingsController::class, 'register']);
     Route::post('agentAtm', [\App\Http\Controllers\AgentAtmsController::class, 'register']);
     Route::get('closest', [AtmController::class, 'getClosestAtms']);
-    Route::get('/atms/search/{search}',  [AtmController::class, 'search']);
+    Route::get('/atms/search/{search}', [AtmController::class, 'search']);
+
+
 
     //Carteira
     Route::get('/wallets/{id}', [\App\Http\Controllers\WalletController::class, 'show']);

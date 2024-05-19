@@ -146,19 +146,23 @@ class AtmController extends Controller
 
     public function search($name = null)
     {
-        $eventsQuery = Atm::where('status', 1);
+        // Cria a query inicial para ATMs com status 1
+        $eventsQuery = Atm::query();
 
+        // Se um nome foi passado e não está vazio, adiciona a condição à query
         if ($name !== null && trim($name) !== "") {
             $eventsQuery->where('address', 'like', '%' . $name . '%');
         }
 
-        $events = $eventsQuery->orderBy('updated_at', 'desc')
-            ->get();
+        // Executa a query ordenando os resultados por 'updated_at' em ordem decrescente
+        $events = $eventsQuery->orderBy('updated_at', 'desc')->get();
 
+        // Verifica se encontrou eventos
         if ($events->isEmpty() && $name !== null) {
-            return response()->json(['message' => 'Nenhum evento encontrado', 'events' => $events], 404);
+            return response()->json(['message' => 'Nenhum atm encontrado'], 404);
         }
 
-        return response()->json(['message' => 'Eventos encontrados', 'events' => $events], 200);
+        // Retorna os eventos encontrados
+        return response()->json($events, 200);
     }
 }
