@@ -5,9 +5,8 @@ use App\Http\Controllers\AdvertisingController;
 use App\Http\Controllers\SubscriptionPlanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckDriverStatus;
 use App\Http\Controllers\AtmCategoryController;
-
+use App\Http\Controllers\UserController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -15,6 +14,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::prefix('v1/')->group(function () {
+
+
+    Route::post('user/send-otp', [\App\Http\Controllers\OtpController::class, 'sendOtp']);
 
     //ATMs
     Route::apiResource('atms', AtmController::class);
@@ -31,16 +33,13 @@ Route::prefix('v1/')->group(function () {
     Route::get('/atms/search/{search}', [AtmController::class, 'search']);
 
 
-
     //Carteira
     Route::get('/wallets/{id}', [\App\Http\Controllers\WalletController::class, 'show']);
     Route::patch('/wallets/{id}', [\App\Http\Controllers\WalletController::class, 'update']);
 
     //Subscricao
     Route::apiResource('subscription_plans', SubscriptionPlanController::class);
-
-
-
+ 
     //Street
     Route::get('/street', [\App\Http\Controllers\streetController::class, 'getStreet']);
     Route::get('/streetById/{id}', [\App\Http\Controllers\streetController::class, 'getStreetById']);
@@ -80,6 +79,11 @@ Route::prefix('v1/')->group(function () {
     Route::get('/advertising/{id}', [AdvertisingController::class, 'show']);
     Route::put('/advertising/{id}', [AdvertisingController::class, 'update']);
     Route::delete('/advertising/{id}', [AdvertisingController::class, 'destroy']);
+
+
+    //users
+    Route::post('/register', [UserController::class, 'register']);
+
 });
 
 Route::get('/imagem/{nomeDaImagem}', function ($nomeDaImagem) {
