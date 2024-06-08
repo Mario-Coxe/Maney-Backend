@@ -11,7 +11,7 @@ use App\Admin\Controllers\ProvinceDetailController;
 use App\Admin\Controllers\MunicipeController;
 use App\Admin\Controllers\AgentAtmsController;
 use App\Admin\Controllers\AdvertisingController;
-// use App\Admin\Controllers\ChartjsController;
+use App\Admin\Controllers\ChartjsController;
 use Illuminate\Routing\Router;
 
 
@@ -26,9 +26,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('dashboard', ChartjsController::class);
-    $router->resource('wallets', WalletController::class);
-    $router->resource('user-subscriptions', UserSubscriptionController::class);
-    $router->resource('subscription-plans', SubscriptionPlanController::class);
     $router->resource('users', UserController::class);
     $router->resource('atms', AtmController::class);
     $router->resource('atm-categories', AtmCategoryController::class);

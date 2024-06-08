@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Controllers\Exception;
 class UserController extends Controller
 {
     public function register(Request $request)
@@ -21,14 +21,14 @@ class UserController extends Controller
             'phone.unique' => 'O número de telefone já está sendo usado.',
             'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json([
                 'message' => 'Erro de validação',
                 'errors' => $validator->errors(),
             ], 422);
         }
-    
+
         // Criação do usuário
         try {
             $user = User::create([
@@ -38,7 +38,7 @@ class UserController extends Controller
                 'tipo_usuario' => $request->tipo_usuario,
                 'ativo' => true
             ]);
-    
+
             // Retorno de uma resposta de sucesso com o usuário criado
             return response()->json([
                 'user' => $user,
@@ -52,34 +52,34 @@ class UserController extends Controller
             ], 500);
         }
     }
-    
-    
+
+
 
 
     public function login(Request $request)
     {
 
-            $user = User::where('email', $request['email'])->first();
-            if(is_null($user)){
-                $response = [
-                    "msg" => "User não encontrado !"
-                ];
-                return json_encode($response,401);
-            }
-            if(!Hash::check($request['password'],$user->password)){
-                $response = [
-                    "msg" => "Ocorreu um erro ao fazer login"
-                ];
-                return json_encode($response,401);
-            }
+        $user = User::where('email', $request['email'])->first();
+        if (is_null($user)) {
+            $response = [
+                "msg" => "User não encontrado !"
+            ];
+            return json_encode($response, 401);
+        }
+        if (!Hash::check($request['password'], $user->password)) {
+            $response = [
+                "msg" => "Ocorreu um erro ao fazer login"
+            ];
+            return json_encode($response, 401);
+        }
 
-            $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-            return json_encode([
-                    'access_token' => $token,
-                    'token_type' => 'Bearer'
+        return json_encode([
+            'access_token' => $token,
+            'token_type' => 'Bearer'
 
-            ],200);
+        ], 200);
     }
 
 
@@ -130,102 +130,99 @@ class UserController extends Controller
 
     public function deleteUser(Request $request, $id)
     {
-        try{
+        try {
             $user = User::find($id);
 
             if ($user) {
-           // Remover registros na tabela enderecos_usuarios
-           // Excluir o usuário
-           $user->delete();
+                // Remover registros na tabela enderecos_usuarios
+                // Excluir o usuário
+                $user->delete();
 
-        return json_encode([
-            'message' => 'Usuário excluído com sucesso!'
-        ]);
-    } else {
-        return json_encode([
-            'message' => 'Usuário não encontrado'
-        ], 404);
-    }
-
-    }catch(Exception $e){
-        return json_encode([
-            'message' => $e
-        ], 404);
-    }
+                return json_encode([
+                    'message' => 'Usuário excluído com sucesso!'
+                ]);
+            } else {
+                return json_encode([
+                    'message' => 'Usuário não encontrado'
+                ], 404);
+            }
+        } catch (Exception $e) {
+            return json_encode([
+                'message' => $e
+            ], 404);
+        }
     }
 
     public function getUser($id)
     {
         try {
-        $user = User::where('id', $id)->where('tipo_usuario', 'other')->firstOrFail();
+            $user = User::where('id', $id)->where('tipo_usuario', 'other')->firstOrFail();
 
-        if (!$user) {
+            if (!$user) {
+                return json_encode([
+                    'message' => 'Usuário não encontrado!'
+                ], 404);
+            }
+
+            // var_dump($endereco); exit;
             return json_encode([
-                'message' => 'Usuário não encontrado!'
-            ], 404);
-        }
-
-       // var_dump($endereco); exit;
-        return json_encode([
-            'user' => $user,
-            'endereco' => $endereco,
-            'tipo_endereco' => $tipoEndereco
-        ]);
-    }catch(Exception $e){
-        return json_encode([
-            'message' => 'Ocorreu um erro!'
-        ], 500);
-    }
-    }
-
-
-    
-public function getUserInfoByTelefoneOrEmail($phone)
-{
-    try{
-    $user = User::where('phone', $phone)->get();
-
-    return json_encode([
-        'user' => $user
-    ]);
-    }catch(Exception $e){
-        return json_encode([
-            'message' => 'Ocorreu um erro!',
-            'erro' =>$e
-        ], 500);
-    }
-}
-
-public function newPassword(Request $request, $telefone)
-{
-    try {
-        $user = User::where('phone', $telefone)->first();
-
-        if (!$user) {
+                'user' => $user,
+                'endereco' => $endereco,
+                'tipo_endereco' => $tipoEndereco
+            ]);
+        } catch (Exception $e) {
             return json_encode([
-                'message' => 'Usuário não encontrado'
-            ], 404);
+                'message' => 'Ocorreu um erro!'
+            ], 500);
         }
-
-        $password = $request->input('password');
-
-        // Verifique se a senha atende aos requisitos desejados
-        // Aqui, você pode adicionar suas próprias regras de validação
-
-        // Defina a nova senha para o usuário
-        $user->password = Hash::make($password);
-        $user->save();
-
-        return json_encode([
-            'message' => 'Nova senha definida com sucesso'
-        ]);
-
-    } catch (\Exception $e) {
-        return json_encode([
-            'message' => 'Ocorreu um erro ao definir a nova senha',
-            'error' => $e->getMessage()
-        ], 500);
     }
-}
 
+
+
+    public function getUserInfoByTelefoneOrEmail($phone)
+    {
+        try {
+            $user = User::where('phone', $phone)->get();
+
+            return json_encode([
+                'user' => $user
+            ]);
+        } catch (Exception $e) {
+            return json_encode([
+                'message' => 'Ocorreu um erro!',
+                'erro' => $e
+            ], 500);
+        }
+    }
+
+    public function newPassword(Request $request, $telefone)
+    {
+        try {
+            $user = User::where('phone', $telefone)->first();
+
+            if (!$user) {
+                return json_encode([
+                    'message' => 'Usuário não encontrado'
+                ], 404);
+            }
+
+            $password = $request->input('password');
+
+            // Verifique se a senha atende aos requisitos desejados
+            // Aqui, você pode adicionar suas próprias regras de validação
+
+            // Defina a nova senha para o usuário
+            $user->password = Hash::make($password);
+            $user->save();
+
+            return json_encode([
+                'message' => 'Nova senha definida com sucesso'
+            ]);
+        } catch (\Exception $e) {
+            return json_encode([
+                'message' => 'Ocorreu um erro ao definir a nova senha',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }
