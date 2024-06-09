@@ -65,46 +65,6 @@
             <div id="content" class="main-content">
                 <div class="layout-px-spacing">
                     <div class="row layout-top-spacing" id="cancel-row">
-                        @yield('content')
-                        <div class="modal fade" id="criar" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Criar Projecto</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form @submit.stop.prevent="saveproject()">
-                                            <div class="form-group mb-3">
-                                                <label>Nome do Projecto</label>
-                                                <input required v-model="newproject.titulo" type="text" class="form-control" placeholder="Titulo do Projecto">
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <textarea required v-model="newproject.descricao" class="form-control" rows="3" placeholder="Descreva o seu projecto"></textarea>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label>Categoria do Projecto</label>
-                                                <select required v-model="newproject.categoria" class="placeholder js-states form-control">
-                                                    <option disabled selected>Escolha uma Categoria...</option>
-                                                    <option v-for="cat in categorias" :key="cat.id" v-bind:value="cat.id">@{{ cat.name }}</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label>Tipos de Pagamentos</label>
-                                                <select required v-model="newproject.pagamento" class="placeholder js-states form-control">
-                                                    <option v-for="pagamento in tipo_de_pagamento" :key="pagamento.id" v-bind:value="pagamento.id">@{{ pagamento.name }}</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group mb-0">
-                                                <label>Prazo</label>
-                                                <input type="date" required min="<?= date('Y-m-d'); ?>" v-model="newproject.data" value="2021-09-19" class="form-control" placeholder="Prazo">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary mt-3 btn-block">Criar Projecto</button>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                         <div class="modal fade" id="avaliar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">

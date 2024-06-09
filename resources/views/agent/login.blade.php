@@ -132,14 +132,14 @@
                             phone: this.phone,
                             password: this.password
                         });
-                        if (response.status === 200) {
+                        if (response.status === 200 && response.data.data[0].tipo_usuario === 'agente') {
                             const token = response.data.token;
                             localStorage.setItem('token', token);
                             localStorage.setItem('user', JSON.stringify(response.data.data[0]));
-                            window.location.href = '/agent/dashboard';
+                            location.href = '/agent/dashboard';
                         } else {
                             this.msg.status = true;
-                            this.msg.message = response.data.msg;
+                            this.msg.message = "Sem premissão de acesso";
                         }
                     } catch (error) {
                         if (error.response && error.response.status === 401) {

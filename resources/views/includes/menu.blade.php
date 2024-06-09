@@ -6,71 +6,6 @@
         <ul class="list-unstyled menu-categories" id="accordionExample">
 
 
-
-            @if($active == 'projectos')
-            <li class="menu">
-                <a href="{{URL::to("/painel/meus-projectos")}}" aria-expanded="true" class="dropdown-toggle">
-                    <div class="">
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        <span> Projectos </span>
-                    </div>
-                </a>
-            </li>
-            @else
-            <li class="menu">
-                <a href="{{URL::to("/painel/meus-projectos")}}" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        <span> Projectos </span>
-                    </div>
-                </a>
-            </li>
-            @endif
-
-            <li class="menu">
-                <a href="#" data-toggle="modal" data-target="#criar" class="dropdown-toggle">
-                    <div class="">
-                        <i data-feather="plus-circle"></i>
-                        <span>Novo Projecto</span>
-                    </div>
-                </a>
-            </li>
-
-
-
-
-            @if($active == 'profissionais')
-            <li class="menu">
-                <a href="{{URL::to("/painel/ver-profissionais")}}" aria-expanded="true" class="dropdown-toggle">
-                    <div class="">
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                        </svg>
-                        <span> Profissionais </span>
-                    </div>
-                </a>
-            </li>
-            @else
-            <li class="menu">
-                <a href="{{URL::to("/painel/ver-profissionais")}}" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                        </svg>
-                        <span> Profissionais </span>
-                    </div>
-                </a>
-            </li>
-            @endif
-
             @if($active == 'pagamentos')
             <li class="menu">
                 <a href="{{URL::to("/painel/meus-pagamentos")}}" aria-expanded="true" class="dropdown-toggle">
@@ -79,7 +14,7 @@
                             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                             <line x1="1" y1="10" x2="23" y2="10"></line>
                         </svg>
-                        <span> Pagamentos </span>
+                        <span> ATMs </span>
                     </div>
                 </a>
             </li>
@@ -91,7 +26,7 @@
                             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                             <line x1="1" y1="10" x2="23" y2="10"></line>
                         </svg>
-                        <span> Pagamentos </span>
+                        <span> ATMs </span>
                     </div>
                 </a>
             </li>
@@ -181,17 +116,6 @@
                     </li>
 
                 </ul>
-            </li>
-
-            <li class="menu">
-                <a href="#" data-toggle="modal" data-target="#avaliar" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                        </svg>
-                        <span>Avaliar Plat.</span>
-                    </div>
-                </a>
             </li>
 
             <li class="menu">

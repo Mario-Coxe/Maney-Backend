@@ -12,15 +12,6 @@
 
 
 
-<div class="fab-container">
-    <div class="fab shadow">
-        <div class="fab-content">
-            <a data-toggle="modal" data-target="#criar" href="#">
-                <span class="material-icons">add</span>
-            </a>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('scripts')
