@@ -39,7 +39,7 @@ Route::prefix('v1/')->group(function () {
 
     //Subscricao
     Route::apiResource('subscription_plans', SubscriptionPlanController::class);
- 
+
     //Street
     Route::get('/street', [\App\Http\Controllers\streetController::class, 'getStreet']);
     Route::get('/streetById/{id}', [\App\Http\Controllers\streetController::class, 'getStreetById']);
@@ -61,7 +61,7 @@ Route::prefix('v1/')->group(function () {
     Route::get('getHistoryByAgent/{agent_id}', [\App\Http\Controllers\HistorieController::class, 'getHistoryByAgent_id']);
     Route::get('user/getByNumber/{phone}', [\App\Http\Controllers\TypeOfUserController::class, 'getTYpeOfUser']);
     Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-    Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById']);
+    Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById'])->middleware('auth:sanctum');;
 
 
     // Facebook login
@@ -83,7 +83,6 @@ Route::prefix('v1/')->group(function () {
 
     //users
     Route::post('/register', [UserController::class, 'register']);
-
 });
 
 Route::get('/imagem/{nomeDaImagem}', function ($nomeDaImagem) {
