@@ -1,4 +1,5 @@
 <?php
+
 use App\Admin\Controllers\AtmCategoryController;
 use App\Admin\Controllers\AtmController;
 use App\Admin\Controllers\SubscriptionPlanController;
@@ -12,6 +13,7 @@ use App\Admin\Controllers\MunicipeController;
 use App\Admin\Controllers\AgentAtmsController;
 use App\Admin\Controllers\AdvertisingController;
 use App\Admin\Controllers\ChartjsController;
+use App\Admin\Controllers\BanksController;
 use Illuminate\Routing\Router;
 
 
@@ -35,4 +37,5 @@ Route::group([
     $router->resource('municipe', MunicipeController::class);
     $router->resource('atribuir-atm-agente', AgentAtmsController::class);
     $router->resource('advertisings', AdvertisingController::class);
+    $router->resource('banks', BanksController::class);
 });
