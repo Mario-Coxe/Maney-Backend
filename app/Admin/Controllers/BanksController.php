@@ -21,6 +21,7 @@ class BanksController extends AdminController
 
         $grid->column('id', __('ID'));
         $grid->column('name', __('Name'));
+        $grid->column('slug', __('Slug'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -42,6 +43,7 @@ class BanksController extends AdminController
 
         $show->field('id', __('ID'));
         $show->field('name', __('Name'));
+        $show->column('slug', __('Slug'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -52,6 +54,7 @@ class BanksController extends AdminController
     {
         $form = new Form(new Banks());
         $form->text('name', __('Name'));
+        $form->text('slug', __('Slug'));
         $form->text('created_at', __('Created at'));
         $form->text('updated_at', __('Updated at'));
 
