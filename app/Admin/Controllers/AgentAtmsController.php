@@ -25,7 +25,7 @@ class AgentAtmsController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new AtmAgent());
-        $grid->column('id', __('ID')); // Adicione o campo 'id'
+        $grid->column('id', __('ID')); 
         $grid->column('atm_id', __('ATM ID'));
         $grid->column('user.name', __('Nome Do Agente'));
         $grid->column('created_at', __('Created at'));
@@ -75,8 +75,8 @@ class AgentAtmsController extends AdminController
             $atmId = $form->atm_id;
             $selectedAgentId = $form->user_id;
 
-            // Update the ATM status to 1
-            \App\Models\Atm::where('id', $atmId)->update(['status' => 1]);
+           
+           // \App\Models\Atm::where('id', $atmId)->update(['status' => 1]);
         });
 
         return $form;

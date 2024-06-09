@@ -21,12 +21,13 @@ class AgentController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('ativo', __('Ativo'))->switch();
-        $grid->column('foto', __('Foto'));
+       // $grid->column('foto', __('Foto'));
         $grid->column('phone', __('Phone'));
+        $grid->column('bank.name', __('Bank'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        $grid->model()->where('tipo_usuario', 'agente'); // Filtro para mostrar apenas agentes
-        $grid->column('ultima_atividade', __('Ultima atividade'));
+        $grid->model()->where('tipo_usuario', 'agente'); 
+       
 
 
          // Botão de filtro
@@ -45,12 +46,12 @@ class AgentController extends AdminController
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
         $show->field('ativo', __('Ativo'))->switch();
-        $show->field('foto', __('Foto'));
+       // $show->field('foto', __('Foto'));
         $show->field('phone', __('Phone'));
+        $show->field('bank.name', __('Bank'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
-        $show->field('ultima_atividade', __('Ultima atividade'));
-        // $show->field('email', __('Email'));
+
 
         $show->panel()
             ->tools(function ($tools) {
@@ -64,16 +65,20 @@ class AgentController extends AdminController
     protected function form()
     {
         $form = new Form(new User());
+
+        $bank = \App\Models\Banks::pluck('name', 'id');
+
         $form->text('name', __('Name'));
         $form->mobile('phone', __('Telefone para login'))->options(['mask' => '+(244) 999 999 999']);
         $form->text('tipo_usuario', __('Tipo usuario'))->default('agente')->readonly();
         $form->text('password', __('Password')); // Inclua o campo senha no formulário
         $form->switch('ativo', __('Ativo'));
 
+        $form->select('bank_id', __('Bank'))->options($bank);
 
-        $form->image('agente.foto', __('Foto'))
-            ->move('public/images') // Diretório onde a imagem será armazenada
-            ->uniqueName(); // Gera um nome único para cada imagem para evitar substituições
+        //$form->image('agente.foto', __('Foto'))
+           // ->move('public/images') // Diretório onde a imagem será armazenada
+            //->uniqueName(); // Gera um nome único para cada imagem para evitar substituições
 
         // Outros campos para o motorista...
         $form->saving(function (Form $form) {
@@ -90,7 +95,7 @@ class AgentController extends AdminController
             }
         });
 
-        $form->datetime('ultima_atividade', __('Ultima atividade'))->default(date('Y-m-d H:i:s'));
+      
 
         return $form;
     }

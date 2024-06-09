@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Veiculo;
-use App\Models\SolicitacaoServico;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -22,7 +20,7 @@ class User extends Authenticatable
         'password',
         'tipo_usuario',
         'ativo',
-        'ultima_atividade',
+        'bank_id',
         'foto'
     ];
 
@@ -31,5 +29,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'ativo' => 'boolean',
     ];
+
+    public function bank()
+    {
+        return $this->belongsTo(Banks::class, 'bank_id');
+    }
+
 
 }
