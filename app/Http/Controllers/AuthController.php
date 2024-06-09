@@ -39,7 +39,7 @@ class AuthController extends Controller
 
         $user->update([
             'ativo' => true,
-            'ultima_atividade' => now(),
+            'updated_at' => now(),
         ]);
 
 
