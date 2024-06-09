@@ -21,17 +21,17 @@ class AgentController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('ativo', __('Ativo'))->switch();
-       // $grid->column('foto', __('Foto'));
+        // $grid->column('foto', __('Foto'));
         $grid->column('phone', __('Phone'));
         $grid->column('bank.name', __('Bank'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        $grid->model()->where('tipo_usuario', 'agente'); 
-       
+        $grid->model()->where('tipo_usuario', 'agente');
 
 
-         // Botão de filtro
-         $grid->filter(function ($filter) {
+
+        // Botão de filtro
+        $grid->filter(function ($filter) {
             // Filtro por nome
             $filter->like('name', __('Name'));
         });
@@ -46,7 +46,7 @@ class AgentController extends AdminController
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
         $show->field('ativo', __('Ativo'))->switch();
-       // $show->field('foto', __('Foto'));
+        // $show->field('foto', __('Foto'));
         $show->field('phone', __('Phone'));
         $show->field('bank.name', __('Bank'));
         $show->field('created_at', __('Created at'));
@@ -77,8 +77,8 @@ class AgentController extends AdminController
         $form->select('bank_id', __('Bank'))->options($bank);
 
         //$form->image('agente.foto', __('Foto'))
-           // ->move('public/images') // Diretório onde a imagem será armazenada
-            //->uniqueName(); // Gera um nome único para cada imagem para evitar substituições
+        // ->move('public/images') // Diretório onde a imagem será armazenada
+        //->uniqueName(); // Gera um nome único para cada imagem para evitar substituições
 
         // Outros campos para o motorista...
         $form->saving(function (Form $form) {
@@ -95,7 +95,7 @@ class AgentController extends AdminController
             }
         });
 
-      
+
 
         return $form;
     }
