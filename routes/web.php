@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('/agent/login', function () {
     return view('agent.login');
 });
+
+
+Route::get('/agent/dashboard', function () {
+    return view('agent.dashboard');
+});

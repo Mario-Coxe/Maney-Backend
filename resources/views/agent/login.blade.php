@@ -136,7 +136,7 @@
                             const token = response.data.token;
                             localStorage.setItem('token', token);
                             localStorage.setItem('user', JSON.stringify(response.data.data[0]));
-                            window.location.href = '/dashboard';
+                            window.location.href = '/agent/dashboard';
                         } else {
                             this.msg.status = true;
                             this.msg.message = response.data.msg;

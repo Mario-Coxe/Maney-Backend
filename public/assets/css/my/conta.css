@@ -1,0 +1,304 @@
+@media (max-width: 700px) {
+    .title_mobile_padrao {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Minhas ConfiguraÃ§Ãµes */
+
+.ml-130 {
+    margin-left: 130px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.mt-50 {
+    margin-top: 50px !important;
+}
+
+.mt-80 {
+    margin-top: 80px !important;
+}
+
+.mt--480 {
+    margin-top: -480px !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt--740 {
+    margin-top: -740px !important;
+}
+.mt--640{
+    margin-top: -640px
+}
+.mt--570 {
+    margin-top: -570px !important;
+}
+/* Colores */
+.text-info {
+    color: #04A3DA !important;
+}
+/* END ConfiguraÃ§Ãµes */
+
+
+/*=============================== INDEX BUMBEIRO LOGIN =============================== */
+
+.fundo_bumbeiro_entrar {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 550px !important;
+}
+
+
+.fundo_bumbeiro_entrar img {
+    width: 200px;
+}
+
+.bumbeiro_entrar .font-weight-100 {
+    font-weight: 100 !important;
+}
+
+.display_mobile {
+    display: none !important;
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 100%;
+    }
+
+    .fundo_bumbeiro_entrar {
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .fundo_bumbeiro_entrar .logo_bumbeiro {
+        float: right !important;
+        margin-left: -10px !important;
+    }
+
+    .fundo_bumbeiro_entrar img {
+        width: 50%;
+        float: left !important;
+
+    }
+
+    .bumbeiro_acesso {
+        margin-top: -340px !important;
+    }
+
+    .display_desktop {
+        display: none;
+    }
+
+    .bumbeiro_botoes_acesso .mt-20 {
+        margin-top: -10px !important;
+    }
+}
+
+/*============================================ CONTA BUMBEIRO ============================================*/
+
+.logo_bumbeiro {
+    width: 90%;
+}
+
+.bumbeiro_opcoes_conta {
+    margin-top: 150px !important;
+}
+
+.height-60 {
+    height: 60px !important;
+}
+
+.fundo_bumbeiro_conta {
+    background-position: bottom;
+    height: 200px;
+    margin-top: 15px !important;
+}
+
+@media (max-width: 700px) {
+    .logo_bumbeiro img {
+        width: 53.5%;
+    }
+
+    .bumbeiro_opcoes_conta {
+        margin-top: 60px !important;
+    }
+
+    .display_desktop {
+        display: none;
+    }
+
+}
+
+
+/* CONTA USUÃRIOS */
+.bumbeiro_conta_cliente {
+    margin-top: 170px !important;
+}
+
+.bumbeiro_fundo_conta_cliente {
+    background-size: 80%;
+    background-repeat: no-repeat;
+    height: 480px !important;
+    margin-top: 110px !important
+}
+
+.bumbeiro_fundo_conta_cliente img {
+    margin-left: 80px !important;
+    margin-top: -190px
+}
+
+@media (max-width: 700px) {
+    .bumbeiro_conta_cliente {
+        margin-top: 250px !important;
+    }
+
+    .bumbeiro_fundo_conta_cliente {
+        background-image: none !important;
+        margin-top: 0px !important;
+        height: 100px !important;
+    }
+
+    .bumbeiro_fundo_conta_cliente img {
+        width: 47.8%;
+        float: left !important;
+        margin-left: 0px !important;
+    }
+
+    .display_desktop {
+        display: none;
+    }
+
+    .bumbeiro_sessoa_entrar {
+        margin-top: -225px !important;
+    }
+}
+
+
+/* CONTA USUÃRIO CÃ“DIGOS */
+.bumbeiro_conta_cliente {
+    margin-top: 170px !important;
+}
+
+.bumbeiro_fundo_conta_cliente {
+    background-size: 80%;
+    background-repeat: no-repeat;
+    height: 650px;
+    margin-top: 110px !important
+}
+
+.bumbeiro_fundo_conta_cliente img {
+    margin-left: 80px !important;
+    margin-top: -190px
+}
+
+
+@media (max-width: 700px) {
+    .bumbeiro_conta_cliente {
+        margin-top: 250px !important;
+    }
+
+    .bumbeiro_fundo_conta_cliente {
+        background-image: none !important;
+        margin-top: 0px !important;
+        height: 100px !important;
+    }
+
+    .bumbeiro_fundo_conta_cliente img {
+        width: 47.8%;
+        float: left !important;
+        margin-left: 0px !important;
+    }
+
+    .display_desktop {
+        display: none;
+    }
+
+    .bumbeiro_sessoa_entrar {
+        margin-top: -225px !important;
+    }
+}
+
+
+/* DADOS PESSOAIS */
+.bumbeiro_conta_cliente {
+    margin-top: 170px !important;
+}
+
+.bumbeiro_fundo_conta_cliente {
+    background-size: 80%;
+    background-repeat: no-repeat;
+    height: 650px;
+    margin-top: 110px !important
+}
+
+.bumbeiro_fundo_conta_cliente img {
+    margin-left: 80px !important;
+    margin-top: -190px
+}
+
+@media (max-width: 700px) {
+    .bumbeiro_conta_cliente {
+        margin-top: 250px !important;
+    }
+
+    .bumbeiro_fundo_conta_cliente {
+        background-image: none !important;
+        margin-top: 0px !important;
+        height: 100px !important;
+    }
+
+    .bumbeiro_fundo_conta_cliente img {
+        width: 47.8%;
+        float: left !important;
+        margin-left: 0px !important;
+    }
+
+    .display_desktop {
+        display: none;
+    }
+
+    .bumbeiro_sessoa_entrar {
+        margin-top: -225px !important;
+    }
+}
+
+
+
+/* MINHA CONTA */
+.minha_conta_bumbeiro {
+    margin-top: 70px !important;
+}
+
+.logo_bumbeiro img{
+    width: 200px;
+}
+
+.bumbeiro_minha_conta_img {
+    width: 320px;
+}
+
+@media (max-width: 700px) {
+    .minha_conta_bumbeiro {
+        margin-top: 55px !important;
+    }
+
+    .minha_conta_bumbeiro .logo_bumbeiro img {
+        width: 47.7%;
+    }
+
+    .bumbeiros_descricoes_conta {
+        margin-top: 40px !important;
+    }
+
+    .bumbeiro_minha_conta_img {
+        width: 70% !important;
+    }
+}
