@@ -17,7 +17,10 @@ class Atm extends Model
         'address',
         'has_cash',
         'has_paper',
-        'status'
+        'status',
+        'bank_id',
+        'how_many_cash',
+        'how_many_paper'
     ];
 
 
@@ -33,8 +36,11 @@ class Atm extends Model
 
     public function municipe()
     {
-       return $this->belongsTo(Municipe::class, 'id_municipe' ); // 'municipe' é o nome da coluna de relacionamento em atms
+        return $this->belongsTo(Municipe::class, 'id_municipe');
     }
 
-
+    public function bank()
+    {
+        return $this->belongsTo(Banks::class, 'bank_id');
+    }
 }
