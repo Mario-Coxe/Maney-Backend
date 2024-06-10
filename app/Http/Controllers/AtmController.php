@@ -24,6 +24,7 @@ class AtmController extends Controller
             ->with("category")
             ->with("street")
             ->with("municipe")
+            ->with("bank")
             ->get();
     }
 
@@ -143,7 +144,7 @@ class AtmController extends Controller
         return $distance;
     }
 
-    
+
 
     public function search($name = null)
     {
