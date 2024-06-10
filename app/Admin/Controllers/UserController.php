@@ -123,8 +123,7 @@ class UserController extends AdminController
             }
         });
 
-        $form->datetime('ultima_atividade', __('Ultima atividade'))->default(date('Y-m-d H:i:s'));
-
+      
         return $form;
     }
 }
