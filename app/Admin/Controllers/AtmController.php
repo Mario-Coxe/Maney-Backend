@@ -38,7 +38,7 @@ class AtmController extends AdminController
         $grid->column('status', __('Status'));
         $grid->column('street.name', __('Street'));
         //$grid->column('municipe.name', __('Municipe'));
-        $grid->column('bank.name', __('Bank'));
+        //$grid->column('bank.name', __('Bank'));
         //$grid->column('updated_at', __('Updated at'));
 
         // Botão de filtro
