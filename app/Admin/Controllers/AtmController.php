@@ -38,8 +38,8 @@ class AtmController extends AdminController
         $grid->column('status', __('Status'));
         $grid->column('street.name', __('Street'));
         //$grid->column('municipe.name', __('Municipe'));
-        $grid->column('bank.name', __('Bank')); 
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('bank.name', __('Bank'));
+        //$grid->column('updated_at', __('Updated at'));
 
         // Botão de filtro
         $grid->filter(function ($filter) {
@@ -128,7 +128,7 @@ class AtmController extends AdminController
         $form->number('how_many_paper', __('How many paper'));
         $form->switch('status', __('Status'));
 
-        $streets = \App\Models\Street::pluck('name', 'id'); 
+        $streets = \App\Models\Street::pluck('name', 'id');
         $municipes = \App\Models\Municipe::pluck('name', 'id');
         $banks = \App\Models\Banks::pluck('name', 'id');
 
