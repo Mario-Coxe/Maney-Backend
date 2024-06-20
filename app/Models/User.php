@@ -24,6 +24,9 @@ class User extends Authenticatable
         'foto'
     ];
 
+    protected $hidden = [
+        'password',
+    ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
