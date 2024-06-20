@@ -32,8 +32,8 @@ class UserController extends AdminController
         $grid->column('phone', __('Phone'));
         $grid->column('tipo_usuario', __('Tipo usuario'));
         $grid->column('ativo', __('Ativo'));
-        $grid->column('ultima_atividade', __('Ultima atividade'));
-        $grid->column('foto', __('Foto'));
+       // $grid->column('ultima_atividade', __('Ultima atividade'));
+        //$grid->column('foto', __('Foto'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -73,8 +73,8 @@ class UserController extends AdminController
         $show->field('phone', __('Phone'));
         $show->field('tipo_usuario', __('Tipo usuario'));
         $show->field('ativo', __('Ativo'));
-        $show->field('ultima_atividade', __('Ultima atividade'));
-        $show->field('foto', __('Foto'));
+       // $show->field('ultima_atividade', __('Ultima atividade'));
+        //$show->field('foto', __('Foto'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -123,7 +123,7 @@ class UserController extends AdminController
             }
         });
 
-      
+
         return $form;
     }
 }
