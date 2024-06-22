@@ -93,6 +93,8 @@ class AtmController extends Controller
             return response()->json(['error' => 'No active ATMs with cash available.'], 404);
         }
 
+
+        //error_log('aqui >>>>>>>>>', $atms);
         $closestAtms = [];
         foreach ($atms as $atm) {
             $closestAtms[] = [
@@ -109,6 +111,7 @@ class AtmController extends Controller
                 'status' => $atm->status,
                 'created_at' => $atm->created_at,
                 'munipice' => $atm->munipice,
+                'bank' => $atm->bank,
                 'distance' => number_format($this->haversineDistance($latitude, $longitude, $atm->longitude, $atm->latitude), 2),
             ];
         }
