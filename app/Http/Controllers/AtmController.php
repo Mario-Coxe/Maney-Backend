@@ -21,7 +21,6 @@ class AtmController extends Controller
     {
         return Atm::where('id_street', '=', $street)
             ->where('status', '=', 1)
-            ->with("category")
             ->with("street")
             ->with("municipe")
             ->with("bank")
@@ -151,8 +150,10 @@ class AtmController extends Controller
 
     public function search($name = null)
     {
+        $eventsQuery = Atm::query()
+            ->where('status', '=', 1)
+            ->with(['street', 'municipe', 'bank']);
 
-        $eventsQuery = Atm::query();
 
         if ($name !== null && trim($name) !== "") {
             $eventsQuery->where('address', 'like', '%' . $name . '%');
@@ -166,4 +167,5 @@ class AtmController extends Controller
 
         return response()->json($events, 200);
     }
+
 }
