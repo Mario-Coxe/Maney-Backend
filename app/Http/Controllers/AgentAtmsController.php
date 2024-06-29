@@ -49,8 +49,7 @@ class AgentAtmsController extends Controller
     public function getAtmById($user_id)
     {
         $atm = AtmAgent::where('user_id', '=', $user_id)
-            ->with('user')
-            ->with('atm')
+            ->with(['user', 'atm.bank'])
             ->get();
         return response()->json($atm);
     }

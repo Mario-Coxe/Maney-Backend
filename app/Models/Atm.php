@@ -24,10 +24,6 @@ class Atm extends Model
     ];
 
 
-    public function category()
-    {
-        return $this->belongsTo(AtmCategory::class);
-    }
 
     public function street()
     {
