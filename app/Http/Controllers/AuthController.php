@@ -44,7 +44,9 @@ class AuthController extends Controller
 
 
 
-        $usuario = User::where('phone', $request['phone'])->get();
+        $usuario = User::where('phone', $request['phone'])
+            ->with('bank')
+            ->get();
 
         if ($usuario->isEmpty()) {
             return json_encode([
