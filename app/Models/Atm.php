@@ -39,4 +39,5 @@ class Atm extends Model
     {
         return $this->belongsTo(Banks::class, 'bank_id');
     }
+
 }

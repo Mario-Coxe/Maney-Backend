@@ -60,19 +60,28 @@ class AtmController extends Controller
         return response()->json(null, 204);
     }
 
-    public function updateStatus($id, $has_cash, $has_paper)
+    public function updateStatus(Request $request)
     {
-        $atmUser = Atm::find($id);
         try {
-            $atmUser->has_cash = $has_cash;
-            $atmUser->has_paper = $has_paper;
-            $atmUser->updated_at = now();
-            $atmUser->save();
-            return response()->json(["success" => "Status do ATM atualizado com sucesso", "data" => $atmUser]);
-        } catch (\Throwable $th) {
-            return response()->json(["error" => $th]);
+            $atm = Atm::find($request->id);
+
+            if ($atm) {
+                $atm->has_cash = $request->input('has_cash');
+                $atm->has_paper = $request->input('has_paper');
+                $atm->how_many_cash = $request->input('how_many_cash');
+                $atm->how_many_paper = $request->input('how_many_paper');
+                $atm->save();
+
+                return response()->json(['message' => 'ATM updated successfully', 'data' => $atm]);
+            } else {
+                return response()->json(['message' => 'ATM not found'], 404);
+            }
+        } catch (\Exception $e) {
+            //Log::error('Error updating ATM: ' . $e->getMessage());
+            return response()->json(['message' => 'Internal Server Error', 'error' => $e->getMessage()], 500);
         }
     }
+
 
 
     public function getClosestAtms(Request $request)

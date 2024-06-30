@@ -15,4 +15,9 @@ class Banks extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function atms()
+    {
+        return $this->hasMany(Atm::class, 'bank_id');
+    }
 }

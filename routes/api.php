@@ -25,7 +25,7 @@ Route::prefix('v1/')->group(function () {
     Route::get('atms/ByStreet/{id_street}', [AtmController::class, 'getAtmByStreet']);
     Route::get('atms/ByCash/', [AtmController::class, 'getAtmByCash']);
     Route::get('atms/AtmByMoney', [AtmController::class, 'getAtmByMoney']);
-    Route::post('/atmUpdate/{id}/{has_cash}/{has_paper}', [\App\Http\Controllers\AtmController::class, 'updateStatus']);
+    Route::post('atmUpdate', [\App\Http\Controllers\AtmController::class, 'updateStatus'])->middleware('auth:sanctum');
     Route::post('agentLogin', [\App\Http\Controllers\atmSettingsController::class, 'login']);
     Route::post('agentRegister', [\App\Http\Controllers\atmSettingsController::class, 'register']);
     Route::post('agentAtm', [\App\Http\Controllers\AgentAtmsController::class, 'register']);
@@ -61,7 +61,7 @@ Route::prefix('v1/')->group(function () {
     Route::get('getHistoryByAgent/{agent_id}', [\App\Http\Controllers\HistorieController::class, 'getHistoryByAgent_id']);
     Route::get('user/getByNumber/{phone}', [\App\Http\Controllers\TypeOfUserController::class, 'getTYpeOfUser']);
     Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-    Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById'])->middleware('auth:sanctum');;
+    Route::get('getAtmAgent/{user_id}', [\App\Http\Controllers\AgentAtmsController::class, 'getAtmById'])->middleware('auth:sanctum');
 
 
     // Facebook login
